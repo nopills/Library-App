@@ -20,7 +20,7 @@ namespace Library_App.Services.MockData
         {           
             await _bookRepo.AddListBooks(new List<Book> {
             new Book { Name = "Код", Author = "Чарльз Петцольд" },
-            new Book { Name = "Sapiens", Author = "Юваль Нон Харари" },
+            new Book { Name = "Sapiens", Author = "Юваль Ной Харари" },
             new Book { Name = "CLR via C#", Author = "Джефри Рихтер" },
             new Book { Name = "C# для профессионалов", Author = "Эндрю Троелсен" },
             new Book { Name = "Защита от тёмных искусств", Author = "Александр Панчин" },
