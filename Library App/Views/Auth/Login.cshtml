@@ -1,0 +1,31 @@
+﻿@model Library_App.Models.ViewModels.LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="user_data">
+    <form asp-antiforgery="true" asp-action="Login" asp-controller="Auth">
+        <div class="tabContent">
+            <div class="fields">
+                <img src="/img/email.svg" alt="" class="left_side_imgs">
+                <input type="text" placeholder="Username" id="login" autocomplete="off" asp-for="UserName">  
+                <span asp-validation-for="UserName"></span>
+            </div>
+
+            <div class="fields">
+                <img src="/img/password.svg" alt="" class="left_side_imgs">
+                <input type="password" placeholder="Password" id="password" autocomplete="off" asp-for="Password"> 
+                <span asp-validation-for="Password"></span>
+            </div>
+
+            <div class="recovery_link">
+                <a href="/Auth/ForgotPassword">Forgot my password</a>
+            </div>
+
+            <input type="submit" value="Log in" class="submit_button">
+
+        </div>
+    </form>
+</div>
+

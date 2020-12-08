@@ -1,0 +1,20 @@
+﻿@model Library_App.Models.ViewModels.BookViewModel;
+
+@{ ViewData["Title"] = "Add Book"; }
+
+<div class="container">
+    <div class="row">
+        <h2>Add Book</h2>
+        <form asp-action="AddBook" asp-controller="Home">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" />
+
+            <label asp-for="Author"></label>
+            <input type="text" asp-for="Author" />
+
+            <button type="submit" class="btn-primary">Add Book</button>
+        </form>
+    </div>
+</div>
+

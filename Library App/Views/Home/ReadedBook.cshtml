@@ -1,0 +1,26 @@
+﻿@model Library_App.Models.ViewModels.BookViewModel.BookList;
+
+@{ ViewData["Title"] = "Readed Books"; }
+
+<div class="container">
+    <h2>Readed Books</h2>
+
+    <div class="book-container">
+        @foreach (var book in Model.books)
+        {
+<div class="book-item">
+    <div class="item-content">
+        <span class="book-name">
+            @book.Name
+        </span>
+        <span class="book-author">
+            @book.Author
+        </span>
+    </div>
+    <div class="book-action">
+        <a asp-action="RemoveBook" asp-controller="Home"
+           asp-route-id="@book.Id">Remove Book</a>
+    </div>
+</div>}
+    </div>
+</div>

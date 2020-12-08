@@ -1,0 +1,35 @@
+﻿@model Library_App.Models.ViewModels.BookViewModel.BookList;
+
+@{ ViewData["Title"] = "Library"; }
+
+<div class="container">
+    <div class="row">
+        <a asp-action="AddBook" asp-controller="Home" class="add-book">
+            Add New Book
+        </a>
+        <a asp-action="GenerateMockData" asp-controller="Home" class="add-book">
+            Get Mock Data
+        </a>
+    </div>
+   
+
+  <div class="book-container">
+    @foreach (var book in Model.books)
+    {
+        <div class="book-item">
+            <div class="item-content">
+                <span class="book-name">
+                    @book.Name
+                </span>
+                <span class="book-author">
+                    @book.Author
+                </span>
+            </div>
+            <div class="book-action">
+                <a asp-action="AddToReaded" asp-controller="Home"
+                   asp-route-id="@book.Id">Add to Readed List</a>
+            </div>
+        </div>
+     }
+  </div>
+</div>
