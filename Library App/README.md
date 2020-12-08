@@ -8,5 +8,4 @@ ASP.NET CORE / Entity Framework Core / Identity
 --------------------------------------------------
 1. Authorization
 2. Registration
-3. Add / Remove books
-4. Add / Remove books from Readed List
+3. Add / Remove books from Readed List
