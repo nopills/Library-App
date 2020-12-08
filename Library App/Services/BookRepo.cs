@@ -57,11 +57,5 @@ namespace Library_App.Services
 
             await _db.SaveChangesAsync();
         }
-
-        //public bool IsReadedBook(Book book, User user)
-        //{
-        //    var readedBook = _db.Books.Include(x => x.ReadedByUser).FirstOrDefault(x => x.Id == book.Id && x.ReadedByUser.Contains(user));
-        //    return readedBook == null ? false : true;
-        //}
     }
 }
