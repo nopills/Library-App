@@ -9,7 +9,7 @@ namespace Library_App.Services.Interfaces
 {
     public interface IBookService
     {
-        Task<BookList> GetBookList();
+        Task<BookList> GetBookList(User user);
         Task<BookList> GetReadedBooks(User user);
     }
 }

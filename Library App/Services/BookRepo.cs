@@ -29,20 +29,17 @@ namespace Library_App.Services
             await _db.SaveChangesAsync();
         }
 
-        public async Task<ICollection<Book>> GetAllBooks()
+        public IQueryable<Book> GetAllUnreadedBooks(User user)
         {
-           return await _db.Books.ToListAsync();
-        } 
+            return _db.Books.Include(x => x.ReadedByUser).Where(x => !x.ReadedByUser.Contains(user)) ?? _db.Books;
+        }
 
+       
         public Book GetBookById(int id)
         {
             return _db.Books.FirstOrDefault(x => x.Id == id);
         }
 
-        public IQueryable<Book> GetBookByName(string name)
-        {
-            return _db.Books.Where(x => x.Name.Contains(name));
-        }
 
         public async Task<ICollection<Book>> GetReadedBookList(User user)
         {
@@ -61,5 +58,10 @@ namespace Library_App.Services
             await _db.SaveChangesAsync();
         }
 
+        //public bool IsReadedBook(Book book, User user)
+        //{
+        //    var readedBook = _db.Books.Include(x => x.ReadedByUser).FirstOrDefault(x => x.Id == book.Id && x.ReadedByUser.Contains(user));
+        //    return readedBook == null ? false : true;
+        //}
     }
 }

@@ -38,7 +38,8 @@ namespace Library_App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await _bookService.GetBookList();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var model = await _bookService.GetBookList(user);
             return View(model);
         }
 

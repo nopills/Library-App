@@ -1,6 +1,7 @@
 ﻿using Library_App.Models;
 using Library_App.Models.ViewModels;
 using Library_App.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,10 @@ namespace Library_App.Services
             _bookRepo = bookRepo;
         }
  
-        public async Task<BookList> GetBookList()
+        public async Task<BookList> GetBookList(User user)
         {
             var model = new BookList();
-            foreach (var book in await _bookRepo.GetAllBooks())
+            foreach (var book in await _bookRepo.GetAllUnreadedBooks(user).ToListAsync())
             {
                 model.books.Add(
                     new BookViewModel
@@ -48,5 +49,7 @@ namespace Library_App.Services
             }
             return model;
         }
+
+     
     }
 }

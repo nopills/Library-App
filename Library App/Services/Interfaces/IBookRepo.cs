@@ -13,8 +13,8 @@ namespace Library_App.Services.Interfaces
         
 
         Book GetBookById(int id);
-        IQueryable<Book> GetBookByName(string name);
-        Task<ICollection<Book>> GetAllBooks();
+        IQueryable<Book> GetAllUnreadedBooks(User user);
+        
         Task<ICollection<Book>> GetReadedBookList(User user);
         Task AddReadedBook(Book book, User user);
         Task RemoveBookFromReaded(Book book, User user);
