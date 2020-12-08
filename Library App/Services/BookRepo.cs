@@ -32,9 +32,7 @@ namespace Library_App.Services
         public async Task<ICollection<Book>> GetAllBooks()
         {
            return await _db.Books.ToListAsync();
-        }
-
-     
+        } 
 
         public Book GetBookById(int id)
         {
@@ -51,10 +49,17 @@ namespace Library_App.Services
             return await _db.Books.Where(x => x.ReadedByUser.Contains(user)).ToListAsync();
         }
 
-        public async Task RemoveBookFromReaded(Book book)
+        public async Task RemoveBookFromReaded(Book book, User user)
         {
-            _db.Books.Remove(book);
+            _db.Books.Include(x => x.ReadedByUser).FirstOrDefault(x => x.Id == book.Id).ReadedByUser.Remove(user);
             await _db.SaveChangesAsync();
         }
+        public async Task AddReadedBook(Book book, User user)
+        {
+            _db.Books.Include(x => x.ReadedByUser).FirstOrDefault(x => x.Id == book.Id).ReadedByUser.Add(user);
+
+            await _db.SaveChangesAsync();
+        }
+
     }
 }

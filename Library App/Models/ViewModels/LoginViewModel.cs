@@ -6,7 +6,7 @@ namespace Library_App.Models.ViewModels
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Please enter a Username")]
-        [Display(Name = "Username")]
+        [Display(Name = "Username")]        
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Please enter a Password")]

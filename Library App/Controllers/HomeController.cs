@@ -21,14 +21,12 @@ namespace Library_App.Controllers
 
         private IBookRepo _bookRepo;
         private IBookService _bookService;
-        private IUserService _userService;
 
-        public HomeController(UserManager<User> userManager, IBookRepo bookRepo, IBookService bookService, IUserService userService)
+        public HomeController(UserManager<User> userManager, IBookRepo bookRepo, IBookService bookService)
         {
             _userManager = userManager;
             _bookRepo = bookRepo;
             _bookService = bookService;
-            _userService = userService;
         }
 
         public async Task<IActionResult> GenerateMockData()
@@ -47,7 +45,8 @@ namespace Library_App.Controllers
         public async Task<IActionResult> RemoveBook(int id)
         {
             var book = _bookRepo.GetBookById(id);
-            await _bookRepo.RemoveBookFromReaded(book);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            await _bookRepo.RemoveBookFromReaded(book, user);
             return RedirectToAction("ReadedBook", "Home");
         }
 
@@ -62,7 +61,7 @@ namespace Library_App.Controllers
         {
             var book = _bookRepo.GetBookById(id);
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            await _userService.AddReadedBook(book, user);
+            await _bookRepo.AddReadedBook(book, user);
             return RedirectToAction("ReadedBook", "Home");
         }
 

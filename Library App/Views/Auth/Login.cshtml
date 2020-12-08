@@ -9,13 +9,13 @@
         <div class="tabContent">
             <div class="fields">
                 <img src="/img/email.svg" alt="" class="left_side_imgs">
-                <input type="text" placeholder="Username" id="login" autocomplete="off" asp-for="UserName">  
+                <input type="text" placeholder="Username" id="login" autocomplete="off" asp-for="UserName">
                 <span asp-validation-for="UserName"></span>
             </div>
 
             <div class="fields">
                 <img src="/img/password.svg" alt="" class="left_side_imgs">
-                <input type="password" placeholder="Password" id="password" autocomplete="off" asp-for="Password"> 
+                <input type="password" placeholder="Password" id="password" autocomplete="off" asp-for="Password">
                 <span asp-validation-for="Password"></span>
             </div>
 
@@ -27,5 +27,9 @@
 
         </div>
     </form>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </div>
 

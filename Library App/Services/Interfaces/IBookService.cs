@@ -11,6 +11,5 @@ namespace Library_App.Services.Interfaces
     {
         Task<BookList> GetBookList();
         Task<BookList> GetReadedBooks(User user);
-
     }
 }

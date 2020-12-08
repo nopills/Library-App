@@ -56,7 +56,6 @@ namespace Library_App
             // < --- Add Repos --- > //
             services.AddScoped<IBookRepo, BookRepo>();
             services.AddScoped<IBookService, BookService>();
-            services.AddScoped<IUserService, UserService>();
            
             services.AddControllersWithViews();
         }

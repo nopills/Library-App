@@ -16,7 +16,7 @@ namespace Library_App.Services.Interfaces
         IQueryable<Book> GetBookByName(string name);
         Task<ICollection<Book>> GetAllBooks();
         Task<ICollection<Book>> GetReadedBookList(User user);
-
-        Task RemoveBookFromReaded(Book book);
+        Task AddReadedBook(Book book, User user);
+        Task RemoveBookFromReaded(Book book, User user);
     }
 }
